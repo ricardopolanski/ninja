@@ -1,6 +1,3 @@
-import spok from 'cy-spok'
-
-
 describe('Login Page API Tests', () => {
   it('Email and Password Fields Empty', () => {
     const payload = {
@@ -15,7 +12,6 @@ describe('Login Page API Tests', () => {
       body: payload,
       failOnStatusCode: false
     }).then((response) => {
-      console.log(response);
       expect(response.status).to.eq(400);
       expect(response.statusText).to.eq("Bad Request");
       const messages = response.body.map(item => item.message);
@@ -48,7 +44,6 @@ describe('Login Page API Tests', () => {
       })
       expect(response.status).to.eq(400);
       expect(response.body[0].message).to.eq("Email field can not be empty");
-      console.log(response.body)
     });
   });
 
@@ -136,7 +131,7 @@ describe('Login Page API Tests', () => {
   });
 
     
-// this test demands more effort than expected due the recaptcha feature
+
   it.skip('Successfull Login - Remember Me', () => {
     
       const payload = {
@@ -146,31 +141,24 @@ describe('Login Page API Tests', () => {
         staySignedIn: true
       };
 
-
       const recaptchaUrl = 'https://www.recaptcha.net/recaptcha/enterprise/reload?k=6LfU_ewjAAAAALijOMmbngnUNShlrhRauhUdACO-';
 
-        // Sending a POST request to the reCAPTCHA URL
         cy.request({
             method: 'POST',
             url: recaptchaUrl,
             headers: {
-              'Content-Type': 'application/x-protobuffer', // Use the original content type
+              'Content-Type': 'application/x-protobuffer', 
               'Accept': '*/*',
               'Accept-Encoding': 'gzip, deflate, br, zstd',
               'Accept-Language': 'en-US,en;q=0.9',
               'Origin': 'https://www.recaptcha.net',
               'Referer': 'https://www.recaptcha.net/recaptcha/enterprise/anchor?ar=1&k=6LfU_ewjAAAAALijOMmbngnUNShlrhRauhUdACO-&co=aHR0cHM6Ly9hcHAubmluamFybW0uY29tOjQ0Mw..&hl=en&v=xds0rzGrktR88uEZ2JUvdgOY&size=invisible&cb=h6brqtc7heil',
               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
-              // Add any other headers if necessary
+              
           },
-            failOnStatusCode: false // Prevent Cypress from failing the test on a non-200 status code
+            failOnStatusCode: false 
         }).then((response) => {
-            // Log the response for debugging
-            console.log('Response from reCAPTCHA:', response);
-
-            // Validate the response (customize based on expected response)
-            expect(response.status).to.eq(200); // Example assertion
-            // Add more assertions as needed based on the response structure
+          expect(response.status).to.eq(200); 
         });
 
       cy.request({
@@ -179,7 +167,6 @@ describe('Login Page API Tests', () => {
         body: payload,
         failOnStatusCode: false
       }).then((response) => {
-        console.log('aquio', response)
         cy.spok(response, {
           body: {
             available_mfa: "5106"
