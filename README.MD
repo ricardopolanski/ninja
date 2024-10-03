@@ -1,6 +1,6 @@
 # Cypress Testing Setup
 
-This repository contains Cypress tests for **[your project name]**. Follow the instructions below to install Cypress and run the tests in both interactive and headless modes.
+This repository contains Cypress tests for **Ninja Automation Test**. Follow the instructions below to install Cypress and run the tests in both interactive and headless modes.
 
 ## Table of Contents
 
