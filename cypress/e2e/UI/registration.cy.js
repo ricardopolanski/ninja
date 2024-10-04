@@ -1,5 +1,5 @@
-describe('NinjaRMM Login Page', () => {
-    it('should load the login page', () => {
+describe('Ninja Registration Page', () => {
+    it('Should register new user', () => {
       cy.visit('https://app.ninjarmm.com/auth/#/register');
   
       cy.get('input[name="organization"]').should('be.visible').focus().type('Ninja testing').should('have.value', 'Ninja testing');

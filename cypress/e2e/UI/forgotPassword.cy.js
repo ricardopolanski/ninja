@@ -1,5 +1,5 @@
-describe('NinjaRMM Login Page', () => {
-    it('should load the login page', () => {
+describe('Forgot Password Test', () => {
+    it('Should Send Out Reset Email', () => {
       cy.visit('https://app.ninjarmm.com/auth/#/resetPassword');
   
       cy.get('.css-yk16xz-control').click()

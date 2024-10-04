@@ -1,5 +1,5 @@
-describe('NinjaRMM Login Page', () => {
-    it('should load the login page', () => {
+describe('Ninja Login Page', () => {
+    it('Should log in succesfully', () => {
       cy.visit('https://app.ninjarmm.com/auth/#/login');
   
       cy.get('input[name="email"]').should('be.visible').focus().type('rpolanski@live.com').should('have.value', 'rpolanski@live.com');
